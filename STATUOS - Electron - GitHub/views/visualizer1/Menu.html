@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html onclick="clickCount()">
+	<head>
+    <title>Menu principal</title>
+    <script>
+      var clcount=0;
+    function clickCount(){
+        clcount+=1;
+      localStorage.setItem('cc1',clcount);
+    }
+    </script>
+	</head>
+	<style>
+		body, html { 
+			margin:0; padding:0; height:100%;
+			background-color: black;
+		}
+		body { 
+			font-family:sans-serif; 
+		}
+		body * { 
+			font-weight:200;
+		}
+		#heatmapContainerWrapper { 
+			position: absolute;
+      width:100%; 
+			height:100%; 
+		}
+		#heatmapContainer { 
+			width:100%; 
+			height:100%;
+		}
+		h1 { 
+			position:absolute; 
+			background:black; 
+			color:white; 
+			padding:10px; 
+			font-weight:200; 
+			z-index:10000;
+		}
+		#all-examples-info { 
+			position:absolute; 
+			background:white; 
+			font-size:16px; 
+			padding:20px; 
+			top:100px; 
+			width:350px; 
+			line-height:150%; 
+			border:1px solid rgba(0,0,0,.2);
+		}
+		  .legend-area{
+			  width: 50%;
+		  }
+		  
+		  #gradient{
+			  display: none;
+		  }
+		  
+		  .heatmap{
+			  position: static;
+        top: -6%;
+        bottom: -10;
+        height: 100%;
+		  }
+		  
+		  canvas{
+			  z-index: 0;
+		  }
+		  
+		  h4{
+			  position: absolute;
+			  color:white;
+			  left: 30%;
+			  top: 40%;
+		  }
+    </style>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script src="../../js/heatmap.js"></script>
+  <script>if (window.module) module = window.module;</script>
+	<script>
+        //  start legend code 
+// we want to display the gradient, so we have to draw it
+window.onload = function() {
+    console.log("yeet");
+    var legendCanvas = document.createElement('canvas');
+    legendCanvas.width = 100;
+    legendCanvas.height = 10;
+    var min = document.querySelector('#min');
+    var max = document.querySelector('#max');
+    var gradientImg = document.querySelector('#gradient');
+    var legendCtx = legendCanvas.getContext('2d');
+    var gradientCfg = {};
+    function updateLegend(data) {
+      // the onExtremaChange callback gives us min, max, and the gradientConfig
+      // so we can update the legend
+      min.innerHTML = data.min;
+      max.innerHTML = data.max;
+      // regenerate gradient image
+      if (data.gradient != gradientCfg) {
+        gradientCfg = data.gradient;
+        var gradient = legendCtx.createLinearGradient(0, 0, 100, 1);
+        for (var key in gradientCfg) {
+          gradient.addColorStop(key, gradientCfg[key]);
+        }
+        legendCtx.fillStyle = gradient;
+        legendCtx.fillRect(0, 0, 100, 10);
+        gradientImg.src = legendCanvas.toDataURL();
+      }
+    };
+    /* legend code end */
+    /* legend code end */
+    var heatmapInstance = h337.create({
+      container: document.querySelector('.heatmap'),
+      // onExtremaChange will be called whenever there's a new maximum or minimum
+    
+    });
+              
+    var points = [];
+    var max = 1000;
+    var min = 0;
+    var width = 1920;
+    var height = 1080;
+    var remove = 0;
+            
+    /* tooltip code start */
+    var demoWrapper = document.querySelector('#heatmapContainerWrapper');
+    var tooltip = document.querySelector('.tooltip');
+    function updateTooltip(x, y, value) {
+      // + 15 for distance to cursor
+      var transl = 'translate(' + (x + 10) + 'px, ' + (y + 10) + 'px)';
+    };
+              
+    demoWrapper.onmousemove = function(ev) {
+      var x = ev.layerX;
+      var y = ev.layerY;
+      // getValueAt gives us the value for a point p(x/y)
+      var value = heatmapInstance.getValueAt({
+        x: x, 
+        y: y
+      });
+      console.log(value);
+      passValue(value);
+      updateTooltip(x, y, value);
+      
+        function passValue(value){
+            var displayValue=value;
+            localStorage.setItem("displayValue",displayValue);
+            //console.log(localStorage.getItem("displayValue"));
+            return false;
+        }
+        function printMousePos(event) {
+    var clickx = event.clientX;
+    var clicky = event.clientY;
+    var clickPos = {
+      x: clickx,
+      y: clicky
+  }
+  return clickPos;
+}
+
+var location = printMousePos(event);
+    localStorage.setItem('clickpos', JSON.stringify(location));
+};
+          
+// hide tooltip on mouseout
+          
+/* tooltip code end */
+
+
+document.addEventListener("click", function(){
+    addPoint();
+    return false;
+    
+});
+    
+    if(localStorage.getItem('reqHeatmap')==0){
+         var fill = {
+          max: 0,
+          min: 0,
+          data: []
+         }
+         var yeet = localStorage.setItem('reqHeatmap',JSON.stringify(fill));
+       }    
+
+    heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap')));
+            
+    function addPoint(){
+      var test = JSON.parse(localStorage.getItem('clickpos'));
+      var val = Math.floor(Math.random()*1234);
+      max = Math.max(max, val);
+      min = Math.min(min, val);
+      var point = {
+        x: test.x,
+        y: test.y,
+        value: 1000 
+      };
+      setInterval(function(){
+          if(remove==1){
+              points.length=0;
+              remove=0;
+          }
+      },10);
+     
+       
+       points=(JSON.parse(localStorage.getItem('reqHeatmap'))).data;
+       points.push(point);
+        var data = { max: max, min: min, data: points };
+        reqHeatmap = localStorage.setItem('reqHeatmap', JSON.stringify(data));
+        //console.log("reqh: "+localStorage.getItem('reqHeatmap'));
+        //console.log("local: "+localStorage.getItem('reqHeatmap'));
+        var capture = localStorage.getItem('reqHeatmap');
+        localStorage.removeItem('reqHeatmap');
+        localStorage.setItem('reqHeatmap', capture);
+       // console.log("2 reqh: "+localStorage.getItem('reqHeatmap'));
+        //console.log("2 local: "+localStorage.getItem('reqHeatmap'));
+    heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap')));
+       
+    }
+    //};
+    
+            
+    setInterval(function(){
+        var triggerIn = localStorage.getItem("trigger");
+        if(triggerIn == 1){
+            remove = 1;
+            /*var data = JSON.parse(localStorage.getItem('reqHeatmap'));
+                  var points = data.data;
+                  points.length = 0;
+                  var newdata = {max: data.max, min:data.min, data:points };
+                  reqHeatmap = localStorage.setItem('reqHeatmap', JSON.stringify(newdata));
+                heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap')));
+            console.log(JSON.parse(localStorage.getItem('reqHeatmap')));*/
+            localStorage.setItem("trigger",0);
+            localStorage.removeItem('reqHeatmap');
+            localStorage.removeItem('reqHeatmap');
+            console.log(JSON.parse(localStorage.getItem('reqHeatmap')));
+            var val = Math.floor(Math.random()*1234);
+            max = Math.max(max, val);
+            min = Math.min(min, val);
+            var data = { max: max, min: min, data:[]};
+            localStorage.setItem('reqHeatmap', JSON.stringify(data));
+            localStorage.setItem('reqHeatmap', JSON.stringify(data));
+            heatmapInstance.setData(data);
+            var clickPos = {
+                x:0,
+                y:0
+            }
+            localStorage.setItem('clickpos',JSON.stringify(clickPos));
+            window.location.reload(false); 
+        }        
+    },10);
+    
+    }
+    </script>
+	<body background="GR.jpg" width="900" height="600">
+<div id="heatmapContainerWrapper">
+	<div class="heatmap">
+			<h3 align="center"><font color="ffffff" face="Narkisim">SELECCIONE UNA CATEGORIA</font><h3>
+				<table width="900" height="600" align="center" border="3" background="GRB.jpg">
+					<tr>	
+						<td align="center" width="300" border="4"><a href="1.html"><img src="3x3.png" width="200" height="200"></a></center></td>
+						<td align="center" width="300" border="4"><a href="2.html"><img src="pyr.png" width="250" height="250"></a></center></td>
+						<td align="center" width="300" border="4"><a href="3.html"><img src="ball.png" width="200" height="200"></a></center></td>
+					</tr>
+						<td align="center" width="300" border="4"><a href="4.html"><img src="megaminx.png" width="200" height="200"></a></center></td>
+						<td align="center" width="300" border="4"><a href="5.html"><img src="gear.png" width="200" height="200"></a></center></td>
+						<td align="center" width="300" border="4"><a href="Extraclase.html"><img src="bb.png" width="150" height="150"></a></center></td>
+		<div class="legend-area">
+	 <img id="gradient" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAKCAYAAABCHPt+AAAAnklEQVRYR+2WQQqDQBAES5wB/f8/Y05RcMWwSu6JIT0Dm4WlH1DUdHew7/z6WYFhhnGRpnlhAEaQpi/ADbh/np0MiBhGhW+2ymFU+DZfg1EhaoB4jCFuMYYcQKZrXwPEVvm5Og0pcYakBvI35G1jNIZ4jCHexxjSpz9ZFUjAynLbpOvqteaODkm9sloz5JF+ZTVmSAWSu9Qb65AvgDwBQoLgVDlWfAQAAAAASUVORK5CYII=" style="width:100%">
+	</div>
+		<!--<div class="tooltip" style="display: block; z-index: 1; transform: translate(463px, 195px);">0</div>-->
+	</div>
+  </div>
+						
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</body>
+</html>

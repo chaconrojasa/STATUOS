@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html onclick="clickCount()">
+    <head>
+        <script>
+            var clcount=0;
+          function clickCount(){
+              clcount+=1;
+            localStorage.setItem('cc1',clcount);
+          }
+          </script>
+        <style>
+      
+    html{
+      height: 100%;
+    }
+    /* global */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+
+    }
+
+    .button_1 {
+      height: 38px;
+      background: red;
+      border: 0;
+      padding-left: 20px;
+      padding-right: 20px;
+      color: #ffffff;
+    }
+
+    .background-highlight {
+      padding: 15px;
+      background: #292828;
+      color: #ffffff;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      width: 80%;
+      /* so it will center */
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .main-col {
+      /* Main-col */
+      float: left;
+      width: 65%;
+    }
+
+    .sidebar {
+      /* Sidebar */
+      float: right;
+      width: 30%;
+      margin-top: 68px;
+    }
+
+    /* header */
+    #header {
+      background-color: #000000;
+      color: #ffffff;
+      border-bottom: red 3px solid;
+    }
+
+    .company-logo {
+      font-size: 20px;
+      float: left;
+      text-transform: uppercase;
+    }
+
+    .nav-bar {
+      float: right;
+      margin-top: 20px;
+
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 20px;
+      text-transform: uppercase;
+      padding-left: 20px;
+    }
+
+    .nav-bar a:hover {
+      color: red;
+    }
+
+    /* slideshow-container */
+    .slideshow-container {
+      max-width: 70%;
+      height: 600px;
+      position: relative;
+      margin: auto;
+    }
+
+    .slides {
+      display: none
+    }
+
+    .slides img {
+      vertical-align: middle;
+      height: 600px;
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+      color: #ec5656;
+      font-size: 50px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin-left: 5px;
+      margin-bottom: 12px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      /* slideshow-nav */
+      background-color: #717171;
+    }
+
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* newsletter */
+    #newsletter {
+      padding: 5px;
+      color: #ffffff;
+      background: #000000;
+    }
+
+    #newsletter h1 {
+      float: left;
+    }
+
+    #newsletter form {
+      float: right;
+      margin-top: 20px;
+    }
+
+    #newsletter input[type="email"] {
+      padding: 4px;
+      height: 25px;
+      width: 250px;
+    }
+
+    /* programs */
+    .box {
+      float: left;
+      text-align: center;
+      width: 30%;
+      padding: 10px;
+    }
+
+    .box img {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* pricing */
+    #pricing li {
+      list-style: none;
+      padding: 20px;
+      border: #cccccc solid 1px;
+      margin-bottom: 5px;
+      background: #e6e6e6;
+    }
+
+    .quote input,
+    .quote textarea {
+      width: 90%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* footer */
+    #footer {
+      padding: 10px;
+      margin-top: 20px;
+      color: #ffffff;
+      background-color: #000000;
+      text-align: center;
+      border-top: red 3px solid;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 500px) {
+      /* global */
+      .company-logo,
+      .nav-bar,
+      .box,
+      .main-col,
+      .sidebar {
+        float: none;
+        text-align: center;
+        width: 100%;
+      }
+
+      .sidebar {
+        margin: 0;
+      }
+
+      /* header */
+      .nav-bar a {
+        padding: 2px;
+        font-size: 18px;
+      }
+
+      /* slideshow-container */
+      .slideshow-container {
+        height: 250px;
+      }
+
+      .slides img {
+        height: 250px;
+      }
+
+      .text {
+        font-size: 20px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+
+      }
+
+      /* newsletter */
+      #newsletter h1 {
+        font-size: 20px;
+      }
+
+      #newsletter input[type="email"] {
+        height: 25px;
+        width: 230px;
+      }
+
+      /* programs */
+      .box img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      /* global */
+      .company-logo,
+      .nav-bar,
+      #program,
+      .box,
+      .main-col,
+      .sidebar {
+        float: none;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* header */
+      .nav-bar a {
+        padding: 2px;
+        font-size: 18px;
+      }
+
+      /* slideshow-container */
+      .slideshow-container {
+        height: 300px;
+      }
+
+      .slides img {
+        height: 300px;
+      }
+
+      .text {
+        font-size: 20px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+
+      }
+
+      /* newsletter */
+      #newsletter {
+        padding: 0px;
+      }
+
+      #newsletter h1 {
+        padding-top: 15px;
+        font-size: 20px;
+      }
+
+      #newsletter input[type="email"] {
+        height: 25px;
+        width: 180px;
+      }
+
+      /* programs */
+      .box img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    @media screen and (max-width: 996px) {
+    /* slideshow-container */
+    .slideshow-container {
+        height: 320px;
+      }
+
+      .slides img {
+        height: 320px;
+      }
+
+      /* newsletter */
+      #newsletter {
+        padding: 0px;
+      }
+
+      #newsletter h1 {
+        font-size: 23px;
+        padding-top: 8px;
+      }
+
+      #newsletter input[type="email"] {
+        height: 25px;
+        width: 200px;
+      }
+
+      /* programs */
+      .box img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+        </style>
+    </head>
+    <body>
+            <div id="heatmapContainerWrapper">
+                    <div class="heatmap">
+          <!-- header -->
+  <div id="header">
+        <div class="container">
+          <div class="company-logo">
+            <p>ABC Tuition Center</p>
+          </div>
+          <div class="nav-bar">
+            <a href="#header">Home</a>
+            <a href="#programs">Programs</a>
+            <a href="#about-us">About</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+        </div>
+      </div>
+    
+      <!-- showcase -->
+      <div id="showcase">
+        <div class="slideshow-container">
+          <div class="slides fade">
+            <img src="https://i.postimg.cc/3JD3q44C/classroom1.jpg" style="width:100%">
+            <div class="text">Caption One</div>
+          </div>
+    
+          <div class="slides fade">
+            <img src="https://i.postimg.cc/nh4pHy1X/classroom2.jpg" style="width:100%">
+            <div class="text">Caption Two</div>
+          </div>
+    
+          <div class="slides fade">
+            <img src="https://i.postimg.cc/g0GdrgMN/classroom3.jpg" style="width:100%">
+            <div class="text">Caption Three</div>
+          </div>
+    
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    
+        </div>
+        <br>
+    
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+    
+      <!-- newsletter -->
+      <div id="newsletter">
+        <div class="container">
+          <h1>Subsctibe To Our Newsletter</h1>
+          <form>
+            <input type="email" placeholder="Enter Email...">
+            <button type="submit" class="button_1" onclick="preventSubmit(event)">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    
+      <!-- programs -->
+      <div id="programs">
+        <div class="container">
+          <h1>Programs</h1>
+          <div class="box">
+            <img src="https://i.postimg.cc/GphcpMtd/elementary-school.jpg">
+            <h3>Elementary School</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.</p>
+          </div>
+          <div class="box">
+            <img src="https://i.postimg.cc/PxCTWP17/middle-school.jpg">
+            <h3>Middle School</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.</p>
+          </div>
+          <div class="box">
+            <img src="https://i.postimg.cc/zftqHnHW/high-school.jpg">
+            <h3>High School</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- about us -->
+      <div id="about-us">
+        <div id="main">
+          <div class="container">
+            <div class="main-col">
+              <h1>About Us</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat.
+                Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget
+                porta in, lacinia et magna. Nam eget eros non orci consectetur congue at ac augue. Proin eget arcu
+                in enim feugiat ultricies. Curabitur maximus metus nec metus pretium viverra at et orci. Integer
+                hendrerit ante ut placerat cursus.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat.
+                Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget
+                porta in, lacinia et magna. Nam eget eros non orci consectetur congue at ac augue. Proin eget arcu
+                in enim feugiat ultricies. Curabitur maximus metus nec metus pretium viverra at et orci. Integer
+                hendrerit ante ut placerat cursus.
+              </p>
+              <p>
+                Aliquam egeta pharetra diam. Nulla placerat lorem at turpis tempor, vel ultrices dui tincidunt.
+                Proin quis egestas lorem. Mauris vehicula lectus odio, sit amet dictum justo feugiat a. Praesent id
+                dictum lacus. Sed ullamcorper id erat ut dictum. Fusce porttitor lorem sapien, in aliquet sapien
+                convallis et. Donec nec mauris nulla. Curabitur cursus semper odio, et hendrerit ante. Nunc at
+                cursus ante. Maecenas gravida ligula ut efficitur suscipit. Nulla id turpis varius, pretium nunc
+                sed, fermentum sem. Sed lacinia nunc non interdum pellentesque.
+              </p>
+            </div>
+    
+            <div class="sidebar">
+              <div class="background-highlight">
+                <h3>What We Do</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat.
+                  Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget
+                  porta in, lacinia et magna</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- pricing -->
+      <div id="pricing">
+        <div class="container">
+          <div class="main-col">
+            <h1>Pricing</h1>
+            <ul>
+              <li>
+                <h3>Elementary School</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet
+                  ultricies at, vulputate id lorem. Nulla facilisi.</p>
+                <p>Pricing: RM40 per subject per month</p>
+              </li>
+              <li>
+                <h3>Middle School</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet
+                  ultricies at, vulputate id lorem. Nulla facilisi.</p>
+                <p>Pricing: RM 50 per subject per month</p>
+              </li>
+              <li>
+                <h3>High School</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet
+                  ultricies at, vulputate id lorem. Nulla facilisi.</p>
+                <p>Pricing: RM 60 per subject per month</p>
+              </li>
+            </ul>
+          </div>
+    
+          <div class="sidebar">
+            <div class="background-highlight">
+              <h3>Register Now !</h3>
+              <form class="quote">
+                <div>
+                  <label>Name</label><br>
+                  <input type="text" placeholder="Name">
+                </div>
+                <div>
+                  <label>Email</label><br>
+                  <input type="email" placeholder="Email Address">
+                </div>
+                <div>
+                  <label>Message</label><br>
+                  <textarea placeholder="Message"></textarea>
+                </div>
+                <button class="button_1" type="submit" onclick="preventSubmit(event)">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="footer">
+        <p>Website Made By Jack Win, Copyright &copy; 2019</p>
+      </div>
+    </div>
+    </div>
+    </body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script src="../../js/heatmap.js"></script>
+  <script>if (window.module) module = window.module;</script>
+    <script>
+            var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("slides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {
+        slideIndex = 1
+      }
+      if (n < 1) {
+        slideIndex = slides.length
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+    function preventSubmit(event) {
+      event.preventDefault();
+    }
+
+    </script>
+    <script>
+            //  start legend code 
+    // we want to display the gradient, so we have to draw it
+    window.onload = function() {
+    console.log("yeet");
+    var legendCanvas = document.createElement('canvas');
+    legendCanvas.width = 100;
+    legendCanvas.height = 10;
+    var min = document.querySelector('#min');
+    var max = document.querySelector('#max');
+    var gradientImg = document.querySelector('#gradient');
+    var legendCtx = legendCanvas.getContext('2d');
+    var gradientCfg = {};
+    function updateLegend(data) {
+      // the onExtremaChange callback gives us min, max, and the gradientConfig
+      // so we can update the legend
+      min.innerHTML = data.min;
+      max.innerHTML = data.max;
+      // regenerate gradient image
+      if (data.gradient != gradientCfg) {
+        gradientCfg = data.gradient;
+        var gradient = legendCtx.createLinearGradient(0, 0, 100, 1);
+        for (var key in gradientCfg) {
+          gradient.addColorStop(key, gradientCfg[key]);
+        }
+        legendCtx.fillStyle = gradient;
+        legendCtx.fillRect(0, 0, 100, 10);
+        gradientImg.src = legendCanvas.toDataURL();
+      }
+    };
+    /* legend code end */
+    /* legend code end */
+    var heatmapInstance = h337.create({
+      container: document.querySelector('.heatmap'),
+      // onExtremaChange will be called whenever there's a new maximum or minimum
+    
+    });
+              
+    var points = [];
+    var max = 1000;
+    var min = 0;
+    var width = 1920;
+    var height = 1080;
+    var remove = 0;
+            
+    /* tooltip code start */
+    var demoWrapper = document.querySelector('#heatmapContainerWrapper');
+    var tooltip = document.querySelector('.tooltip');
+    function updateTooltip(x, y, value) {
+      // + 15 for distance to cursor
+      var transl = 'translate(' + (x + 10) + 'px, ' + (y + 10) + 'px)';
+    };
+              
+    demoWrapper.onmousemove = function(ev) {
+      var x = ev.layerX;
+      var y = ev.layerY;
+      // getValueAt gives us the value for a point p(x/y)
+      var value = heatmapInstance.getValueAt({
+        x: x, 
+        y: y
+      });
+      console.log(value);
+      passValue(value);
+      updateTooltip(x, y, value);
+      
+        function passValue(value){
+            var displayValue=value;
+            localStorage.setItem("displayValue",displayValue);
+            //console.log(localStorage.getItem("displayValue"));
+            return false;
+        }
+        function printMousePos(event) {
+    var clickx = event.clientX;
+    var clicky = event.clientY;
+    var clickPos = {
+      x: clickx,
+      y: clicky
+  }
+  return clickPos;
+}
+
+var location = printMousePos(event);
+    localStorage.setItem('clickpos', JSON.stringify(location));
+};
+          
+// hide tooltip on mouseout
+          
+/* tooltip code end */
+
+
+document.addEventListener("click", function(){
+    addPoint();
+    return false;
+    
+});
+    
+if(localStorage.getItem('reqHeatmap5')==0){
+         var fill = {
+          max: 0,
+          min: 0,
+          data: []
+         }
+         var yeet = localStorage.setItem('reqHeatmap5',JSON.stringify(fill));
+       }     
+
+heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap5')));
+       
+            
+    function addPoint(){
+      var test = JSON.parse(localStorage.getItem('clickpos'));
+      var val = Math.floor(Math.random()*1234);
+      max = Math.max(max, val);
+      min = Math.min(min, val);
+      var point = {
+        x: test.x,
+        y: test.y,
+        value: 1000
+      };
+      setInterval(function(){
+          if(remove==1){
+              points.length=0;
+              remove=0;
+          }
+      },10);
+     
+       points=(JSON.parse(localStorage.getItem('reqHeatmap5'))).data;
+       points.push(point);
+        var data = { max: max, min: min, data: points };
+        localdata = localStorage.setItem('reqHeatmap5', JSON.stringify(data));
+        console.log("reqh: "+localStorage.getItem('reqHeatmap5'));
+        console.log("local: "+localStorage.getItem('reqHeatmap5'));
+        var capture = localStorage.getItem('reqHeatmap5');
+        localStorage.removeItem('reqHeatmap5');
+        localStorage.setItem('reqHeatmap5', capture);
+        console.log("2 reqh: "+localStorage.getItem('reqHeatmap5'));
+        console.log("2 local: "+localStorage.getItem('reqHeatmap5'));
+    heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap5')));
+       
+    }
+    //};
+              
+            
+    setInterval(function(){
+        var triggerIn = localStorage.getItem("trigger");
+        if(triggerIn == 1){
+            remove = 1;
+            /*var data = JSON.parse(localStorage.getItem('localData'));
+                  var points = data.data;
+                  points.length = 0;
+                  var newdata = {max: data.max, min:data.min, data:points };
+                  localdata = localStorage.setItem('localData', JSON.stringify(newdata));
+                heatmapInstance.setData(JSON.parse(localStorage.getItem('localData')));
+            console.log(JSON.parse(localStorage.getItem('localData')));*/
+            localStorage.setItem("trigger",0);
+            localStorage.removeItem('reqHeatmap5');
+            localStorage.removeItem('reqHeatmap5');
+            console.log(JSON.parse(localStorage.getItem('reqHeatmap5')));
+            var val = Math.floor(Math.random()*1234);
+            max = Math.max(max, val);
+            min = Math.min(min, val);
+            var data = { max: max, min: min, data:[]};
+            localStorage.setItem('reqHeatmap5', JSON.stringify(data));
+            localStorage.setItem('reqHeatmap5', JSON.stringify(data));
+            heatmapInstance.setData(data);
+            var clickPos = {
+                x:0,
+                y:0
+            }
+            localStorage.setItem('clickpos',JSON.stringify(clickPos));
+            window.location.reload(false); 
+        }        
+    },10);
+    }
+        </script>
+</html>

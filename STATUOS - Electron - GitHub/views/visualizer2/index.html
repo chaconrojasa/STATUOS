@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html onclick="clickCount()">
+    <head>
+        <script>
+            var clcount=0;
+          function clickCount(){
+              clcount+=1;
+            localStorage.setItem('cc1',clcount);
+          }
+          </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Coda:400,800|Oswald|PT+Sans|Satisfy");
+
+:root {
+    font-size: 12px;
+}
+
+html {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    letter-spacing: 0.03em;
+
+    box-shadow: 0 0 20px #000;
+}
+
+body::after {
+    content: "";
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1/cherry-blossoms-unsplash.jpg");
+    background-size: cover;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+}
+
+h1, h2, h3, p, ul, ol, blockquote {
+    background-color: white;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 3em;
+    padding: 1em 0.5em 0.5em 0.5em;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    height: 1px;
+    margin-top: 0.2em;
+    background: -webkit-linear-gradient(left, #ffffff 0%,#000000 15%,#000000 82%,#ffffff 100%);
+}
+
+h2, h3 {
+    padding: 1em 2em 0 3em;
+}
+
+h3::before {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0.25em;
+    transform: rotate(45deg);
+    background-color: rgb(0,0,0);
+}
+
+p {
+    padding: 1em 4em;
+    text-align: justify;
+}
+
+ul {
+    padding-left: 6em;
+}
+
+strong {
+    font-weight: 400;
+}
+
+p, ul, ol {
+    line-height: 1.5em;
+}
+
+blockquote p {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.5em;
+    text-align: center;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote p::before, blockquote p::after {
+    font-size: 4em;
+    line-height: 0.1em;
+    vertical-align: -0.4em;  
+}
+
+blockquote p::before {
+    content: open-quote;
+    margin-right: 0.25em;
+}
+
+blockquote p::after {
+    content: close-quote;
+    margin-left: 0.25em;
+}
+
+p img, h2 + p {
+    display: none;
+}
+
+h1 + p {
+    color: rgb(0,0,0);
+}
+
+h1 + p em {
+    color: rgba(0,0,0,0.5);
+}
+
+h1 + p, h1, h2 {
+    text-align: center;
+}
+
+ul + p {
+    padding-bottom: 5em;
+}
+
+#heatmapContainerWrapper{
+    height: 100%;
+}
+
+.heatmap{
+    position: absolute;
+    left: 0;
+    height: 100%;
+}
+
+@media (min-width: 480px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 720px) {
+  :root {
+    font-size: 16px;
+  }
+    body {
+        margin: 10vw 20vw;
+    }
+}
+        </style>
+    </head>
+    <body>
+            <div id="heatmapContainerWrapper">
+                    <div class="heatmap">
+                        <div>
+        <h1>A Tremendous Post Title</h1>
+<p><strong><em>June 11th, 2018</em> by Writerton McWriterpants</strong></p>
+<h2>An Inspiring Subtitle</h2>
+<p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1/cherry-blossoms-unsplash.jpg" alt="cherry blossoms"></p>
+<p>Spring has sprung! In this tremendous blog article we're going to cover some points. This is where I'm telling you that what I'm going to tell you. Then I'm going to tell you those things. Then, because your special, and I'm to tell you what I told you.
+  <strong>Here comes a blockquote:</strong></p>
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis fringilla dolor, a sollicitudin turpis posuere elementum.</p>
+</blockquote>
+<p>That quote was from the famous latin composer... nope, just kidding. Emmet generated it because that's a feature that it has. In the next section, we're really going to get into the meat of this blog post.</p>
+<h3>All the Good Stuff is in These Paragraphs</h3>
+<p><em>Donec accumsan lacinia blandit</em>. Nunc ornare ante id sapien ullamcorper sollicitudin. Vestibulum vel odio sapien. Nam quis est maximus, cursus nibh at, dictum lorem. Donec vestibulum quam quis lorem egestas semper. Nullam et congue libero, a ultricies
+  urna. Vivamus sed efficitur nisl. Fusce dapibus, lectus vel laoreet mattis, quam tellus fermentum diam, et luctus sem tortor in lorem. Nunc interdum ipsum ligula. Pellentesque sed diam erat.</p>
+<p>Aliquam porta metus nec erat ullamcorper accumsan. Etiam egestas sit amet ante vitae lacinia. Donec ultricies eu nisl vel mattis. Suspendisse vestibulum sed velit lacinia imperdiet. Vivamus in nibh ullamcorper, laoreet arcu ut, gravida nulla. Curabitur
+  in diam tempus, cursus mauris a, posuere tellus. Pellentesque purus orci, commodo non ex eu, porttitor sagittis erat. Vestibulum at orci nec turpis pharetra imperdiet quis ut urna. Donec eget accumsan tortor. In interdum mauris at velit gravida, in
+  euismod lacus sodales. Curabitur pellentesque nunc nulla, id convallis enim eleifend vel.</p>
+<p>Vivamus mollis fringilla dolor, a sollicitudin turpis posuere elementum. Quisque risus dolor, rhoncus sed imperdiet vel, tristique ac nisi. Sed dapibus aliquam nibh, at posuere dolor lobortis ac. Nam quis urna ac magna facilisis blandit. Maecenas vel
+  arcu nec ipsum venenatis malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam semper ac sem at interdum. Ut massa est, egestas id sem at, commodo consequat velit.</p>
+<h3>Some Key Takeaways</h3>
+<p>After reading this tremendous blog article, these are the salient points:</p>
+<ul>
+  <li>A bullet point</li>
+  <li>Another one
+    <ol>
+      <li>Sub point one</li>
+      <li>Sub point two</li>
+    </ol>
+  </li>
+  <li>Another one</li>
+  <li>How about four?</li>
+</ul>
+<p>In a pellentesque eros. Morbi elementum venenatis est quis cursus. Nunc vitae mi maximus, volutpat enim nec, ultricies libero. Donec pharetra dui arcu, vel sagittis dolor scelerisque nec!</p>
+</div>
+</div>    
+</div>
+</body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script src="../../js/heatmap.js"></script>
+  <script>if (window.module) module = window.module;</script>
+    <script>
+            //  start legend code 
+    // we want to display the gradient, so we have to draw it
+    window.onload = function() {
+    console.log("yeet");
+    var legendCanvas = document.createElement('canvas');
+    legendCanvas.width = 100;
+    legendCanvas.height = 10;
+    var min = document.querySelector('#min');
+    var max = document.querySelector('#max');
+    var gradientImg = document.querySelector('#gradient');
+    var legendCtx = legendCanvas.getContext('2d');
+    var gradientCfg = {};
+    function updateLegend(data) {
+      // the onExtremaChange callback gives us min, max, and the gradientConfig
+      // so we can update the legend
+      min.innerHTML = data.min;
+      max.innerHTML = data.max;
+      // regenerate gradient image
+      if (data.gradient != gradientCfg) {
+        gradientCfg = data.gradient;
+        var gradient = legendCtx.createLinearGradient(0, 0, 100, 1);
+        for (var key in gradientCfg) {
+          gradient.addColorStop(key, gradientCfg[key]);
+        }
+        legendCtx.fillStyle = gradient;
+        legendCtx.fillRect(0, 0, 100, 10);
+        gradientImg.src = legendCanvas.toDataURL();
+      }
+    };
+    /* legend code end */
+    /* legend code end */
+    var heatmapInstance = h337.create({
+      container: document.querySelector('.heatmap'),
+      // onExtremaChange will be called whenever there's a new maximum or minimum
+    
+    });
+              
+    var points = [];
+    var max = 1000;
+    var min = 0;
+    var width = 1920;
+    var height = 1080;
+    var remove = 0;
+            
+    /* tooltip code start */
+    var demoWrapper = document.querySelector('#heatmapContainerWrapper');
+    var tooltip = document.querySelector('.tooltip');
+    function updateTooltip(x, y, value) {
+      // + 15 for distance to cursor
+      var transl = 'translate(' + (x + 10) + 'px, ' + (y + 10) + 'px)';
+    };
+              
+    demoWrapper.onmousemove = function(ev) {
+      var x = ev.layerX;
+      var y = ev.layerY;
+      // getValueAt gives us the value for a point p(x/y)
+      var value = heatmapInstance.getValueAt({
+        x: x, 
+        y: y
+      });
+      console.log(value);
+      passValue(value);
+      updateTooltip(x, y, value);
+      
+        function passValue(value){
+            var displayValue=value;
+            localStorage.setItem("displayValue",displayValue);
+            //console.log(localStorage.getItem("displayValue"));
+            return false;
+        }
+        function printMousePos(event) {
+    var clickx = event.clientX;
+    var clicky = event.clientY;
+    var clickPos = {
+      x: clickx,
+      y: clicky
+  }
+  return clickPos;
+}
+
+var location = printMousePos(event);
+    localStorage.setItem('clickpos', JSON.stringify(location));
+};
+          
+// hide tooltip on mouseout
+          
+/* tooltip code end */
+
+
+document.addEventListener("click", function(){
+    addPoint();
+    return false;
+    
+});
+    
+if(localStorage.getItem('reqHeatmap2')==0){
+         var fill = {
+          max: 0,
+          min: 0,
+          data: []
+         }
+         var yeet = localStorage.setItem('reqHeatmap2',JSON.stringify(fill));
+       } 
+    
+heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap2')));
+console.log("h2"+localStorage.getItem('reqHeatmap2'));
+       
+            
+    function addPoint(){
+      var test = JSON.parse(localStorage.getItem('clickpos'));
+      var val = Math.floor(Math.random()*1234);
+      max = Math.max(max, val);
+      min = Math.min(min, val);
+      var point = {
+        x: test.x,
+        y: test.y,
+        value: 1000
+      };
+      setInterval(function(){
+          if(remove==1){
+              points.length=0;
+              remove=0;
+          }
+      },10);
+     
+  
+       points=(JSON.parse(localStorage.getItem('reqHeatmap2'))).data;
+       points.push(point);
+        var data = { max: max, min: min, data: points };
+        localdata = localStorage.setItem('reqHeatmap2', JSON.stringify(data));
+        console.log("reqh: "+localStorage.getItem('reqHeatmap2'));
+        console.log("local: "+localStorage.getItem('reqHeatmap2'));
+        var capture = localStorage.getItem('reqHeatmap2');
+        localStorage.removeItem('reqHeatmap2');
+        localStorage.setItem('reqHeatmap2', capture);
+        console.log("2 reqh: "+localStorage.getItem('reqHeatmap2'));
+        console.log("2 local: "+localStorage.getItem('reqHeatmap2'));
+    heatmapInstance.setData(JSON.parse(localStorage.getItem('reqHeatmap2')));
+       
+    }
+    //};
+              
+            
+    setInterval(function(){
+        var triggerIn = localStorage.getItem("trigger");
+        if(triggerIn == 1){
+            remove = 1;
+            /*var data = JSON.parse(localStorage.getItem('localData'));
+                  var points = data.data;
+                  points.length = 0;
+                  var newdata = {max: data.max, min:data.min, data:points };
+                  localdata = localStorage.setItem('localData', JSON.stringify(newdata));
+                heatmapInstance.setData(JSON.parse(localStorage.getItem('localData')));
+            console.log(JSON.parse(localStorage.getItem('localData')));*/
+            localStorage.setItem("trigger",0);
+            localStorage.removeItem('reqHeatmap2');
+            localStorage.removeItem('reqHeatmap2');
+            console.log(JSON.parse(localStorage.getItem('reqHeatmap2')));
+            var val = Math.floor(Math.random()*1234);
+            max = Math.max(max, val);
+            min = Math.min(min, val);
+            var data = { max: max, min: min, data:[]};
+            localStorage.setItem('reqHeatmap2', JSON.stringify(data));
+            localStorage.setItem('reqHeatmap2', JSON.stringify(data));
+            heatmapInstance.setData(data);
+            var clickPos = {
+                x:0,
+                y:0
+            }
+            localStorage.setItem('clickpos',JSON.stringify(clickPos));
+            window.location.reload(false); 
+        }        
+    },10);
+    }
+        </script>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<style>
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #110709;
+        overflow: hidden;
+    }
+
+    #full-height {
+        height: 100%;
+        top: 0;
+    }
+
+    #container{
+        width: 90%;
+        height: 90%;
+        background-color: #735f63;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 6%;
+        vertical-align: middle;
+        position: relative;
+    }
+    
+    #one{
+        height: 50%;
+        width: 50%;
+        background-color: #4b2229;
+        float: left;
+        clear: both;
+    }
+    
+    #two{
+        height: 50%;
+        width: 50%;
+        background-color: #612a34;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    
+    #three{
+        height: 100%;
+        width: 50%;
+        background-color: #813745;
+        position: relative;
+        float: right;
+    }
+          
+    #visualizerbtn{
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        bottom: 25%;
+        left: 25%;
+        background-color: #1f0205;
+        border-radius: 10px;
+        border: solid white 3px;
+        box-shadow: black 0px 0px 40px;
+        
+    }
+    
+    #visualizerbtn:hover{
+        transition: 1s;
+        border: solid red 3px;
+        box-shadow: white 0px 0px 40px;
+    }
+    
+    #profilebtn{
+        position: absolute;
+        height: 30%;
+        width: 30%;
+        bottom: 60%;
+        left: 10%;
+        background-color: #1f0205;
+        border-radius: 10px;
+        border: solid white 3px;
+        box-shadow: black 0px 0px 40px;
+        
+    }
+    
+    #profilebtn:hover{
+        transition: 1s;
+        border: solid red 3px;
+        box-shadow: white 0px 0px 40px;
+    }
+    #statsbtn{
+        position: absolute;
+        height: 60%;
+        width: 60%;
+        bottom: 20%;
+        left: 20%;
+        background-color: #1f0205;
+        border-radius: 10px;
+        border: solid white 3px;
+        box-shadow: black 0px 0px 40px;
+        
+    }
+    
+    #statsbtn:hover{
+        transition: 1s;
+        border: solid red 3px;
+        box-shadow: white 0px 0px 40px;
+    }
+    #hvis{
+        color: white;
+        font-family: "Segoe UI Light", "light";
+        position: absolute;
+        left: 30%;
+        bottom: 5%;
+    }
+    
+    #hper{
+        color: white;
+        font-family: "Segoe UI Light", "light";
+        position: absolute;
+        left: 18%;
+        bottom: 30%;
+    }
+    #back{
+        background-color: #813745;
+        height: 100px;
+        width: 30px;
+        position: fixed;
+        left: 0;
+        top: 40%;
+        cursor: pointer;
+    }
+    #arrow{
+        color: white;
+        font-size: 30px;
+        font-family: 'Segoe UI';
+        position: relative;
+        top: 25%;
+        left: 15%;
+        cursor: pointer;
+    }
+    #hmimg{
+        filter: invert(100%);
+        position: relative;
+        left: 8%;
+        bottom: 0%;
+        height: 250px;
+        width: 250px;
+    }
+    #pfimg{
+        filter: invert(100%);
+        position: relative;
+        left: 50%;
+        bottom: -8%;
+        height: 150px;
+        width: 150px;
+    }
+    #ghimg{
+        height: 150px;
+        width: 150px;
+        position: absolute;
+        filter: invert(100%);
+        left: 50%;
+        bottom: 10%;
+    }
+</style>
+<script>
+    var compare = localStorage.getItem('lastuser');
+    if(compare!="<%=user%>"){
+        console.log('diferente');
+        localStorage.removeItem('reqHeatmap');
+        localStorage.removeItem('reqHeatmap2');
+        localStorage.removeItem('reqHeatmap3');
+        localStorage.removeItem('reqHeatmap4');
+        localStorage.removeItem('reqHeatmap5');
+        localStorage.setItem('lastuser', "<%=user%>");
+    }else{
+        console.log('igual');
+    }
+    function back(){
+        window.history.back();
+    }
+</script>
+<body>
+    <div id="full-height">
+        <div id="back">
+            <a id="arrow" href="/index"><</a>
+        </div>
+        <div id="container" class="container">
+            <div id="one">
+                <a id="profilebtn" href="/stats">
+                    <img src="pf.png" id="pfimg"></img>
+                    <h2 id="hper">PROFILE</h2>
+                </a>
+            </div>
+            <div id="two">
+                    <a id="statsbtn" href="/fullstats">
+                        <img src="graph.png" id="ghimg"></img>
+                        <h2 id="hper">STATS</h2>
+                    </a>
+            </div>
+            <div id="three">
+                <a id="visualizerbtn" href="/visualizer">
+                    <img src="hm.png" id="hmimg"></img>
+                    <h2 id="hvis">VISUALIZER</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

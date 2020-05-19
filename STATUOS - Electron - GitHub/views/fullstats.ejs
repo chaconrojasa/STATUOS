@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<style>
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #110709;
+        overflow: hidden;
+    }
+
+    #full-height {
+        height: 100%;
+        top: 0;
+    }
+
+    #container{
+        width: 70%;
+        height: 90%;
+        background-color: #735f63;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 6%;
+        vertical-align: middle;
+        position: relative;
+    }
+    
+    #one{
+        height: 50%;
+        width: 50%;
+        background-color: #4b2229;
+        float: left;
+        clear: both;
+    }
+    
+    #two{
+        height: 100%;
+        width: 50%;
+        background-color: #612a34;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    
+    #three{
+        height: 100%;
+        width: 50%;
+        background-color: #813745;
+        position: relative;
+        float: right;
+    }
+          
+    #visualizerbtn{
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        bottom: 25%;
+        left: 25%;
+        background-color: #1f0205;
+        border-radius: 10px;
+        border: solid white 3px;
+        box-shadow: black 0px 0px 40px;
+        
+    }
+    
+    #visualizerbtn:hover{
+        transition: 1s;
+        border: solid red 3px;
+        box-shadow: white 0px 0px 40px;
+    }
+    
+    h2{
+        color: white;
+        font-family: "Segoe UI Light", "light";
+        position: absolute;
+        left: 30%;
+        bottom: 30%;
+    }
+
+    #profile{
+        background-color: #451b22;
+        position: absolute;
+        width: 80%;
+        height: 200px;
+        left: 10%;
+        bottom: 50%;
+        box-shadow: inset black 0px 0px 50px;
+    }
+    #user{
+        color:white;
+        font-family:'Segoe UI Light', Light;
+        font-size: 40px;
+        position: absolute;
+        left: 10%;
+        bottom: 10%;
+    }
+    #id{
+        color:white;
+        font-family:'Segoe UI Light', Light;
+        font-size: 40px;
+        position: absolute;
+        left: 10%;
+        bottom: -20%;
+    }
+    #name{
+        color:white;
+        font-family:'Segoe UI Light', Light;
+        font-size: 40px;
+        position: absolute;
+        left: 10%;
+        bottom: 40%;
+    }
+    #role{
+        color:red;
+        font-family:'Segoe UI Light', Light;
+        font-size: 40px;
+        position: absolute;
+        left: 15%;
+        bottom: 10%;
+    }
+    #role.usuario{
+        color: white;
+        font-family:'Segoe UI Light', Light;
+        font-size: 40px;
+        position: absolute;
+        left: 30%;
+        bottom: 10%;
+    }
+
+    #rawstats{
+        background-color: #451b22;
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        left: 10%;
+        bottom: 10%;
+        box-shadow: inset black 0px 0px 50px;
+        border: solid white 3px;
+    }
+    #avg{
+        background-color: #451b22;
+        position: absolute;
+        width: 80%;
+        height: 10%;
+        left: 10%;
+        bottom: 10%;
+        box-shadow: inset black 0px 0px 50px;
+        border: solid white 3px;
+    }
+    #biguser{
+        position: absolute;
+        left: 27%;
+        top: 5%;
+        color: white;
+        font-family: 'Segoe UI';
+        font-size: 60px;
+        text-transform: uppercase;
+        text-align: center;
+        
+    }
+    #clicks{
+        position: relative;
+        height: 50%;
+        top: 30%;
+        background-color: #813745;
+        width: 80%;
+        left: 10%;
+        border-radius: 5px;
+        border: solid white 1px;
+    }
+    #totalclicks{
+        position: absolute;
+        color: white;
+        font-family: 'Segoe UI Light';
+        font-size: 20px;
+        left: 13%;
+    }
+    span{
+        font-size: 50px;
+    }
+    #singleclicks{
+        height: 50%;
+        position: absolute;
+        top: 25%;
+        left: 5%;  
+    }
+    #singleclick{
+        color: #debfc2;
+        font-size: 20px;
+    }
+    ul{
+        line-height: 50%;
+    }
+    .bar-chart{
+        background-color: #451b22;
+        border: solid white 3px;
+        position: absolute;
+        left: 15%;
+        top: 15%;
+        box-shadow: inset  #000 0px 0px 50px 10px;
+    }
+    table{
+        width: 300px;
+        position: absolute;
+        top: 67%;
+        color: white;
+        left: 15%;
+        font-family: 'Segoe UI';
+        margin: 0px;
+    }
+    td{
+        padding: 10px;
+        padding-left: 14px;
+        border-left: solid white 1px;
+    }
+    #last{
+        border-right: solid white 1px;
+    }
+    #avrg{
+        color: white;
+        font-family: 'Segoe UI Light';
+        font-size: 20px;
+        position: absolute;
+        left: 5%;
+        bottom: 30%;
+    }
+    #res{
+        color: white;
+        font-family: 'Segoe UI Light';
+        font-size: 40px;
+        position: absolute;
+        bottom: -40%;
+        right: -40%;
+    }
+    #back{
+        background-color: #813745;
+        height: 100px;
+        width: 30px;
+        position: fixed;
+        left: 0;
+        top: 40%;
+        cursor: pointer;
+    }
+    #arrow{
+        color: white;
+        font-size: 30px;
+        font-family: 'Segoe UI';
+        position: relative;
+        top: 25%;
+        left: 15%;
+        cursor: pointer;
+    }
+</style>
+<script src="js/d3.js"></script>
+<body>
+    <div id="full-height">
+            <div id="back" >
+                    <a id="arrow" href="/home"><</a>
+                </div>
+        <div id="container" class="container">
+            <div id="two">
+                <div id="rawstats">
+                    <a id="biguser">TOTAL</a>
+                    <div id="clicks">
+                            <a id="totalclicks">Total de clicks: <span><%= sum %><span></a>
+                                <div id="singleclicks">
+                                    <ul id="singleclick">Clicks en página 1: <%= c1%></ul>
+                                    <ul id="singleclick">Clicks en página 2: <%= c2%></ul>
+                                    <ul id="singleclick">Clicks en página 3: <%= c3%></ul>
+                                    <ul id="singleclick">Clicks en página 4: <%= c4%></ul>
+                                    <ul id="singleclick">Clicks en página 5: <%= c5%></ul>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div id="three">
+                <svg></svg>
+                <table>
+                    <tr>
+                        <td>Pg1</td>
+                        <td>Pg2</td>
+                        <td>Pg3</td>
+                        <td>Pg4</td>
+                        <td id="last">Pg5</td>
+                    </tr>
+                </table>
+                <div id="avg">
+                    <a id="avrg">El promedio de clicks es: <span id="res"><%= avg %></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script> 
+function back(){
+        window.history.back();
+    }
+        var svgWidth = 300;
+        var svgHeight = 300;
+        var svg = d3.select('svg')
+            .attr("width", svgWidth)
+            .attr("height", svgHeight)
+            .attr("class", "bar-chart");
+        
+            var dataset = [<%= c1%>*5, <%= c2%>*5, <%= c3%>*5, <%= c4%>*5, <%= c5%>*5];
+
+            /*var dataset = [
+                {name: "pg1", value:(<%=c1%>*10)},
+                {name: "pg2", value:(<%=c2%>*10)},
+                {name: "pg3", value:(<%=c3%>*10)},
+                {name: "pg4", value:(<%=c4%>*10)},
+                {name: "pg5", value:(<%=c5%>*10)},
+            ]*/
+
+            var color = d3.scaleOrdinal()
+            .domain(dataset)
+            .range(["#ffffff","#fff200","#11d611","#002fff","#ff0000"]);
+
+var barPadding = 10;  
+var barWidth = (svgWidth / dataset.length);
+
+var barChart = svg.selectAll("rect")  
+    .data(dataset)  
+    .enter()  
+    .append("rect")  
+    .attr("y", function(d) {  
+        return svgHeight - d  
+    })  
+    .attr("height", function(d) {  
+        return d;  
+    })  
+    .attr("width", barWidth - barPadding)  
+    .attr("transform", function (d, i) {  
+         var translate = [barWidth * i, 0];  
+         return "translate("+ translate +")";  
+    })
+    .attr("fill", function (d, i){ return color(i) } );
+        
+
+    </script>
+</html>
