@@ -15,7 +15,7 @@
     "bcryptjs": "^2.4.3",
     "d3": "^5.9.7",
     "ejs": "^2.6.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "handlebars": "^4.3.0",
     "heatmap.js": "^2.0.5",
